@@ -5,7 +5,7 @@
 #define SUPERIO_DEV             SIO0
 #define SUPERIO_PNP_BASE        0x2e
 
-#define NCT6776_SHOW_SP1        1
-#define NCT6776_SHOW_KBC        1
+#define NCT5572D_SHOW_SP1       1
+#define NCT5572D_SHOW_KBC       1
 
-#include "superio/nuvoton/nct6776/acpi/superio.asl"
+#include "superio/nuvoton/nct5572d/acpi/superio.asl"

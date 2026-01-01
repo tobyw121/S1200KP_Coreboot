@@ -11,7 +11,7 @@ chip northbridge/intel/sandybridge
 	register "gpu_panel_power_down_delay" = "0"
 	register "gpu_panel_power_up_delay" = "0"
 	register "gpu_pch_backlight" = "0x00000000"
-# Two UDIMM slots populate channel A and B slot 0.
+# Two UDIMM slots are wired to channel A (DIMM1/DIMM2) using these SPD addrs.
 	register "spd_addresses" = "{0x50, 0x52}"
 
 	device domain 0x0 on
@@ -94,12 +94,12 @@ chip northbridge/intel/sandybridge
 			device ref pci_bridge on
 				subsystemid 0x8086 0x202d
 			end
-			device ref lpc on
-				subsystemid 0x8086 0x202d
-				chip superio/nuvoton/nct6776 # Winbond W83677HG-i compatible
-					device pnp 2e.0 off end # Floppy
-					device pnp 2e.1 off end # Parallel port unused
-					device pnp 2e.2 on # COM1 / UART
+                        device ref lpc on
+                                subsystemid 0x8086 0x202d
+                                chip superio/nuvoton/nct5572d # Matches superiotool: NCT6775F/NCT5572D (0xb473)
+                                        device pnp 2e.0 off end # Floppy
+                                        device pnp 2e.1 off end # Parallel port unused
+                                        device pnp 2e.2 on # COM1 / UART
 						io 0x60 = 0x3f8
 						irq 0x70 = 4
 					end
