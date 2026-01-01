@@ -11,13 +11,8 @@
 
 void bootblock_mainboard_early_init(void)
 {
-	/*
-	* Mirror the OEM LPC decode ranges so that COM1, the keyboard controller
-	* and the Super I/O configuration ports are available for bootblock and
-	* payload consumers (e.g. SeaBIOS) right from reset.
-	*/
-	pci_write_config16(PCH_LPC_DEV, LPC_EN, 0x3f0f);
-	pci_write_config16(PCH_LPC_DEV, LPC_IO_DEC, 0x0010);
+	pci_write_config16(PCI_DEV(0, 0x1f, 0), 0x82, 0x3f0f);
+	pci_write_config16(PCI_DEV(0, 0x1f, 0), 0x80, 0x0010);
 
 	nuvoton_pnp_enter_conf_state(SERIAL_DEV);
 	pnp_set_logical_device(SERIAL_DEV);
