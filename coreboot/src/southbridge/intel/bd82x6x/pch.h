@@ -19,8 +19,22 @@
 
 #define SMBUS_SLAVE_ADDR	0x24
 /* TODO Make sure these don't get changed by stage2 */
+#ifndef DEFAULT_GPIOBASE
+#if CONFIG(BOARD_INTEL_S1200KP)
+/*
+ * The Intel S1200KP firmware uses 0x500 as its GPIO base. Keep the port
+ * aligned with the OEM resource layout instead of the chipset default
+ * (0x480) so ACPI, SMM and runtime consumers agree on the decode range.
+ */
+#define DEFAULT_GPIOBASE	0x0500
+#else
 #define DEFAULT_GPIOBASE	0x0480
+#endif
+#endif
+
+#ifndef DEFAULT_PMBASE
 #define DEFAULT_PMBASE		0x0500
+#endif
 
 #include <southbridge/intel/common/rcba.h> /* IWYU pragma: export */
 
