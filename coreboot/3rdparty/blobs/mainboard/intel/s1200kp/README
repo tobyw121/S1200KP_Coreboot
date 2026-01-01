@@ -1,7 +1,0 @@
-Binary blobs for the Intel S1200KP mainboard must be extracted from the OEM
-firmware image. From the repository root, run:
-
-  ./S1200KP_BIOS/extract_s1200kp_blobs.sh [path/to/W25Q32BV_s1200kp.bin]
-
-The script will populate this directory with descriptor.bin, me.bin, and
-gbe.bin for the board before building coreboot.
