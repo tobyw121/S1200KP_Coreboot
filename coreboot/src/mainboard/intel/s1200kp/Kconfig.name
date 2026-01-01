@@ -1,4 +1,0 @@
-## SPDX-License-Identifier: GPL-2.0-only
-
-config BOARD_INTEL_S1200KP
-	bool "S1200KP"
