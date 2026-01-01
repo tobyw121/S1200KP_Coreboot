@@ -1,4 +1,7 @@
+Vendor name: Intel Corporation
+Board name: S1200KP
 Category: server
 ROM protocol: SPI
 Flashrom support: n
 Release year: 2012
+ROM size (KB): 4096
